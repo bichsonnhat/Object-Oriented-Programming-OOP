@@ -47,7 +47,7 @@ class Decoy: public cBinaryOption{
         int getType(){
             return 2;
         };
-        
+
         void setID(int newID){
             id = newID;
         }
@@ -84,7 +84,7 @@ class Trader : public cBinaryOption{
 };
 
 int main(){
-    int n, m; 
+    int n, m;
     cin >> n >> m;
     vector <cBinaryOption*> a(n);
     map <int, double> curMoney;
@@ -110,8 +110,8 @@ int main(){
                 break;
         }
     }
-    
-    map <int, int> prev;    
+
+    map <int, int> prev;
     vector <Info> Player;
     map <int, double> cost;
     for (int i = 1; i <= m; ++i){
@@ -119,7 +119,7 @@ int main(){
         while (true){
             cin >> id;
             if (id == -1) break;
-            bool typePlay; int go, money; 
+            bool typePlay; int go, money;
             cin >> typePlay >> go >> money;
             Info p;
             p.ID = id;
@@ -130,7 +130,7 @@ int main(){
         }
 
         if (id == -1){
-            double cnt_up = 0, cnt_down = 0; 
+            double cnt_up = 0, cnt_down = 0;
             for (auto p : Player){
                 if (p.TypePlay == 0){
                     if (p.Play == 1) cnt_up += p.Money * 2;
@@ -157,7 +157,7 @@ int main(){
                         }
                     }
 
-                    // case -1: Down -> Up
+                    // case -1: Up -> Down
                     if (cur == -1){
                         cnt_down += p.Money * hs;
                         prev[p.ID] = 0;
@@ -199,8 +199,8 @@ int main(){
                 }
             }
         }
-    }  
-    
+    }
+
     vector <pair <int, double> > result;
     for (auto i : curMoney){
         result.push_back({i.first, i.second});
